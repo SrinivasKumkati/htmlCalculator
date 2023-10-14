@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML Calculator | Major Project</title>
+    <style>
+        .calButtons{
+            width: 70px;
+            height: 70px;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container p-5">
+        <div class="d-flex justify-content-center">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="card">
+                    <div class="d-flex justify-content-center align-items-center p-3" >
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="background-color:gray; height:160px; width: 300px; border-radius: 5px; color: white;">
+                                <div class="row mx-1 my-3 fs-5" id="inputContainer"></div>
+                                <div class="row mx-1 my-3 fs-5" id="expressionsContainer"></div>
+                                <div class="row mx-1 my-3 fs-5" id="resultContainer"></div>
+                                <div id="savedExpression" style="display: none;"></div>
+                                <!-- <div class="row" id="expressionsContainer"></div>
+                                <div class="row" id="resultContainer"></div> -->
+                                <!-- <div id="inputContainer"></div>
+                                <div id="expressionsContainer"></div>
+                                <div id="resultContainer"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-3" >
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="NumLock" class="btn btn-outline-secondary calButtons"><span class="fs-6 fw-bold">Num Lock</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="Backspace" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-semibold">CE</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="Backspace1" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-semibold">DEL</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="/" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">/</span></button></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="7"class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">7</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="8"class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">8</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="9"class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">9</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="*"class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">X</span></button></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="4" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">4</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="5" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">5</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="6" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">6</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="-" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">-</span></button></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="1" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">1</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="2" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">2</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="3" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">3</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="+" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">+</span></button></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <button data-event_key="0" class="btn btn-outline-secondary calButtons" style="width: 158px;"><span class="fs-4 fw-bold">0</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="." class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">.</span></button></div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <button data-event_key="=" class="btn btn-outline-secondary calButtons"><span class="fs-4 fw-bold">=</span></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script>      
+        $(document).on('keypress', function (event) {
+            var key = event.key; // Get the pressed key
+            // console.log(key);
+            // Select the button with the matching data-event_key attribute
+            var $buttonPressed = $("button[data-event_key='" + key + "']");
+            // Adding a class to the selected button
+            $buttonPressed.addClass("active");
+            // console.log(event.keyCode);
+            if ((event.keyCode>=48) && (event.keyCode<=57)) {
+                generateInputExpression(key);
+            }else if ((event.keyCode==42) || (event.keyCode==43) || (event.keyCode==45) || (event.keyCode==47)) {
+                calculateExpression(key);   
+            }else if (event.keyCode==13) {
+                evaluateExpression();
+            }else if (event.keyCode==46) {
+                addDecimal();
+            }else if (event.keyCode==8) {
+                deleteLastInput();
+            }
+        })
+
+        $(document).on('keyup', function (event) {
+            var key = event.key; // Get the pressed key
+            // console.log(key);
+            // Select the button with the matching data-event_key attribute
+            var $buttonPressed = $("button[data-event_key='" + key + "']");
+
+            // Adding a class to the selected button
+            $buttonPressed.removeClass("active");
+
+            // console.log(event);
+        })
+
+        $('.calButtons').on('click', function (event) {
+            // console.log(event);
+            var clickedKey = $(this).data('event_key'); 
+            if ((clickedKey>=0) && (clickedKey<=9)) {
+                generateInputExpression(clickedKey);
+                // console.log(clickedKey);
+            }else if (clickedKey=='+' || clickedKey=='-' || clickedKey=='*' || clickedKey=='/') {
+                calculateExpression(clickedKey);
+            }else if (clickedKey=='=') {
+                evaluateExpression();
+            }else if (clickedKey=='.') {
+                addDecimal();
+            }else if (clickedKey=='Backspace') {
+                deleteLastInput();
+            }
+        })
+
+        var generateInputExpression = (inputNumber)=>{
+            var inputExpression = document.getElementById('inputContainer').innerText;
+            // console.log(inputExpression);
+            var generatedInputExpression = '';
+            if (inputExpression=='null' || inputExpression == '0' || inputExpression == 'undefined' || inputExpression == 'Infinity' || inputExpression == 'NaN') {
+                generatedInputExpression = inputNumber;
+            }
+            else{
+                generatedInputExpression = inputExpression + inputNumber;     
+            }
+            // console.log(generatedInputExpression);
+            document.getElementById('inputContainer').innerText = generatedInputExpression;
+        }
+
+        var calculateExpression = (operator)=>{
+            var inputExpression = document.getElementById('inputContainer').innerText;
+            var calculatedExpression = '';
+            var previousExpression = document.getElementById('savedExpression').innerText;
+            if (previousExpression=='null' || previousExpression == '0' || previousExpression == 'undefined' || previousExpression == 'Infinity' || previousExpression == 'NaN') {
+                calculatedExpression = inputExpression + operator;
+            }
+            else{
+                calculatedExpression = previousExpression + inputExpression + operator;     
+            }
+            // console.log(calculatedExpression);
+            document.getElementById('savedExpression').innerText = calculatedExpression;
+            document.getElementById('inputContainer').innerText = '0';
+            document.getElementById('expressionsContainer').innerText = calculatedExpression;
+            // console.log(inputExpression);
+            // var calculatedExpression = '';
+            // if (inputExpression=='null' || inputExpression == '0' || inputExpression == 'undefined' || inputExpression == 'Infinity' || inputExpression == 'NaN') {
+            //     calculatedExpression = '0';
+            // }
+            // else{
+            //     calculatedExpression = eval(inputExpression);     
+            // }
+        }
+
+        var evaluateExpression=()=>{
+            var inputExpression = document.getElementById('inputContainer').innerText;
+            var previousExpression = document.getElementById('savedExpression').innerText;
+            var calculatedExpression = previousExpression + inputExpression;
+            // console.log(calculatedExpression);
+            document.getElementById('savedExpression').innerText = '0';
+            document.getElementById('resultContainer').innerText = '='+ eval(calculatedExpression);
+            document.getElementById('expressionsContainer').innerText = '0';
+            document.getElementById('inputContainer').innerText = '0';
+        }
+
+        // var clearExpression=()=>{
+        //     document.getElementById('savedExpression').innerText = '';
+        //     document.getElementById('resultContainer').innerText = '';
+        //     document.getElementById('expressionsContainer').innerText = '';
+        //     document.getElementById('inputContainer').innerText = '';
+        // }
+
+        var deleteLastInput=()=>{
+            var inputExpression = document.getElementById('inputContainer').innerText;
+            var inputExpressionLength = inputExpression.length;
+            if (inputExpressionLength==1) {
+                document.getElementById('inputContainer').innerText = '0';
+            }else{
+                var lastInput = inputExpression.substring(0, inputExpressionLength-1);
+                document.getElementById('inputContainer').innerText = lastInput;
+            }
+            
+        }
+
+        var addDecimal = ()=>{
+            var inputExpression = document.getElementById('inputContainer').innerText;
+            var inputExpressionLength = inputExpression.length;
+            var lastInput = inputExpression.substring(inputExpressionLength-1, inputExpressionLength);
+            if (lastInput!='.') {
+                document.getElementById('inputContainer').innerText = inputExpression + '.';
+            }
+        }
+
+        var clearAll = ()=>{
+            document.getElementById('savedExpression').innerText = '0';
+            document.getElementById('resultContainer').innerText = '';
+            document.getElementById('expressionsContainer').innerText = '';
+            document.getElementById('inputContainer').innerText = '0';
+        }
+    </script>
+</body>
+
+</html>
